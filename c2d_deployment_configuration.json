@@ -1,0 +1,7 @@
+{
+  "defaultDeploymentType": "MULTI_VM",
+  "templateName": "datastax",
+  "projectId": "datastax-public",
+  "imageName": "datastax-enterprise-ubuntu-1604-xenial-v20180824",
+  "useSolutionPackage": true
+}

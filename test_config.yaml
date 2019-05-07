@@ -1,0 +1,6 @@
+imports:
+  - path: ddac.py
+
+resources:
+- name: ddac
+  type: ddac.py

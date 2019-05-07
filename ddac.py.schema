@@ -1,0 +1,99 @@
+# Copyright 2019 DataStax Inc. All rights reserved.
+#
+
+info:
+  title: VM-based high-availability service
+  author: DataStax, Inc.
+  description: |
+    A DSE image based IGM running in a region.
+    This templates creates:
+    + Instance Template
+    + Instance Group Manager
+
+required:
+- region
+- network
+- clusterName
+- clusterSize
+- dcName
+- machineType
+- dataDiskType
+- dataDiskSize
+
+properties:
+
+  region:
+    type: string
+    default: us-west1
+    x-googleProperty:
+      type: GCE_REGION
+
+  network:
+    type: string
+    default: ddac-vpc
+    description: VPC network for DDAC deployment
+
+  clusterName:
+    type: string
+    default: ddac_cluster
+    description: DDAC cluster name
+
+  clusterSize:
+    type: integer
+    default: 3 
+    enum:
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8 
+      - 9 
+      - 10
+      - 11
+      - 12
+      - 13
+      - 14
+      - 15
+
+  dcName:
+    type: string
+    default: dc-1
+    Description: DDAC data center name
+
+  ddacZone:
+    type: string
+    default: us-west1-a
+    x-googleProperty:
+      type: GCE_ZONE
+
+  machineType:
+    type: string
+    default: n1-standard-8
+    x-googleProperty:
+      type: GCE_MACHINE_TYPE
+      zoneProperty: ddacZone
+      gceMachineType:
+        minCpu: 8
+        minRamGb: 16
+
+  dataDiskSize:
+    type: integer
+    default: 200
+    x-googleProperty:
+      type: GCE_DISK_SIZE
+      gceDiskSize:
+        diskTypeProperty: dataDiskType
+
+  dataDiskType:
+    type: string
+    default: pd-ssd
+    x-googleProperty:
+      type: GCE_DISK_TYPE
+      zoneProperty: ddacZone
+
+outputs:
+  region:
+  type: string
+  clusterName:
+  type: string 

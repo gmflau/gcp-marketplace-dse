@@ -1,0 +1,90 @@
+metadataVersion: v1
+description:
+  title: DataStax Distribution of Apache Cassandra (DDAC)
+  tagline: Distributed database based on Apache Cassandra
+  url: 'https://www.datastax.com/products/datastax-distribution-of-apache-cassandra'
+  author:
+    shortDescription: 'DataStax delivers Apache Cassandra™ in a database platform purpose-built for the performance and availability demands for IoT, web and mobile applications.'
+    title: DataStax
+    url: 'http://datastax.com'
+  descriptionHtml: "DataStax Distribution of Apache Cassandra™ (DDAC) addresses common open source challenges with adoption, maintenance, and support by streamlining operations and controlling costs for all your Apache Cassandra workloads. You’ll have access to production-ready, 100% open source compatible Cassandra software, as well as support and services from the experts that wrote the majority of the Apache Cassandra code.
+
+Our product also gives businesses full data visibility, portability, and control, allowing them to retain strategic ownership of their most valuable asset in a hybrid/multi cloud world. We help many of the world’s leading brands across industries transform their businesses through an enterprise data layer that eliminates data silos and cloud vendor lock-in while powering modern, mission-critical applications. For more information, visit www.DataStax.com and follow us on @DataStax."
+  logo: '@media/datastax.png'
+  architectureDescription: 'The DataStax Distribution of Apache Cassandra (DDAC) deployment creates a DDAC cluster with a configurable number of nodes in a single GCP region. The DDAC nodes use SSD based persistent disks to store data.'
+  architectureDiagram: '@media/datastax_diagram.png'
+  version: 5.1.12
+  eulaUrl: 'https://www.datastax.com/enterprise-terms'
+  documentations:
+    - title: Getting started
+      url: 'https://github.com/DSPN/google-deployment-guide/blob/master/ddac.md'
+      description: DataStax Distribution of Apache Cassandra™ deployment guide on GCP marketplace
+      destinations:
+        - DESTINATION_SOLUTION_DETAILS
+        - DESTINATION_CONFIGURATION
+        - DESTINATION_POST_DEPLOY
+    - title: DataStax Documentation
+      url: 'https://docs.datastax.com/en/ddac/doc/index.html'
+      description: Index page for DataStax documentation
+      destinations:
+        - DESTINATION_SOLUTION_DETAILS
+        - DESTINATION_CONFIGURATION
+        - DESTINATION_POST_DEPLOY
+  softwareGroups:
+    - type: SOFTWARE_GROUP_OS
+      software:
+        - title: Ubuntu
+          version: 16.04 LTS
+    - software:
+        - title: DataStax Distribution of Apache Cassanra
+          version: 5.1.12
+  support:
+    - title: Support
+      descriptionHtml: 'The use of DataStax software in GCP marketplace solution is intended for development purpose only. It includes a limited no-fee license from DataStax. As described in section 1.4 of DataStax Enterprise Terms, the limited license is for development or non-production use.'
+      url: 'https://support.datastax.com'
+input:
+  sections:
+    - name: nodes
+      title: DDAC Nodes
+  properties:
+    - name: region
+      title: GCP region
+      tooltip: GCP region to deploy DDAC cluster
+    - name: network
+      title: New VPC to deploy DDAC cluster
+      tooltip: New VPC network to deploy DDAC cluster
+    - name: clusterName
+      title: DDAC cluster name
+      tooltip: DDAC cluster name.
+    - name: dcName
+      title: DDAC cluster's single datacenter name
+      tooltip: DDAC cluster's single datacenter name.
+    - name: clusterSize
+      title: Number of DDAC nodes (Max. 15)
+      tooltip: Number of DDAC nodes.
+      subtext: Maximum supported number of DDAC nodes is 15
+    - name: machineType
+      title: Machine Type
+      section: nodes
+    - name: dataDiskSize
+      title: Data Disk Size (GB)
+      section: nodes
+    - name: dataDiskType
+      title: Data Disk Type
+      section: nodes
+    - name: ddacZone
+      title: DDAC node default zone
+      level: 1
+runtime:
+  deployingMessage: 'Deployment of DDAC cluster can take about 20 minutes to complete.'
+  applicationTable:
+    rows:
+      - label: Region
+        value: '{{ outputs().region }}'
+      - label: DDAC Cluster Name
+        value: '{{ outputs().clusterName }}'
+  suggestedActions:
+    - heading: Database tools
+      description: 'The DDAC nodes each have the database and associated tools installed. Find your DDAC node virtual machine(s) inside GCP console and use the SSH button to ssh into the node(s) and begin exploring tools like <a href="https://docs.datastax.com/en/ddaccql/doc/">cqlsh</a> and <a href="https://docs.datastax.com/en/ddac/doc/datastax_enterprise/tools/nodetool/toolsNodetool.html">nodetool</a>.'
+    - heading: Tutorials
+      description: 'Getting started tutorials and online courses are available at <a href="https://academy.datastax.com/">https://academy.datastax.com</a>'
