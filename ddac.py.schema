@@ -2,13 +2,10 @@
 #
 
 info:
-  title: VM-based high-availability service
+  title: DDAC Cluster Deployment
   author: DataStax, Inc.
   description: |
-    A DSE image based IGM running in a region.
-    This templates creates:
-    + Instance Template
-    + Instance Group Manager
+    DataStax Distribution of Apache Cassandra deployment via GCP marketplace
 
 required:
 - region
@@ -55,6 +52,11 @@ properties:
       - 13
       - 14
       - 15
+      - 16
+      - 17
+      - 18
+      - 19
+      - 20
 
   dcName:
     type: string
