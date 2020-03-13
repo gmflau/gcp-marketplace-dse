@@ -81,7 +81,7 @@ properties:
 
   dataDiskSize:
     type: integer
-    default: 200
+    default: 1024
     x-googleProperty:
       type: GCE_DISK_SIZE
       gceDiskSize:

@@ -60,9 +60,9 @@ input:
       title: DDAC cluster's single datacenter name
       tooltip: DDAC cluster's single datacenter name.
     - name: clusterSize
-      title: Number of DDAC nodes (Max. 15)
+      title: Number of DDAC nodes (Max. 20)
       tooltip: Number of DDAC nodes.
-      subtext: Maximum supported number of DDAC nodes is 15
+      subtext: Maximum supported number of DDAC nodes is 20
     - name: machineType
       title: Machine Type
       section: nodes
